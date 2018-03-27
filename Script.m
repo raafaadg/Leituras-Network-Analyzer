@@ -20,7 +20,6 @@ for i = 1:size(files_Name,2)
         
         if files_Data{i}(k) == ','
             j = j+1;         
-%             files_Data_conv(j,i) = cell(1); 
         else
             files_Data_conv(j,i) = strcat(files_Data_conv(j,i),files_Data{i}(k));    
         end
@@ -42,13 +41,15 @@ for  i=1:size(files_Data_num,2)
         yl=('Magnetude');
         j=0;
         k = k+1;
+        if(contains(files_Name(i),'mais')||contains(files_Name(i),'menos'))
+            files_Data_num(:,i) = files_Data_num(:,i)+40; 
+        end
     else
         yl=('Fase');
         j=1; 
     end
-%     subplot(j,k,size(files_Data_num,2))
     subplot(2,size(files_Data_num,2)/2,k+3*j)
-    plot(logscale,files_Data_num(:,i))
+    semilogx(logscale,files_Data_num(:,i))
     title(files_Name(i))
     xlabel('Escala Logaritmica 5Hz - 5Khz')
     ylabel(yl);
