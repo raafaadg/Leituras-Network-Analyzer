@@ -3,8 +3,8 @@ files = dir;
 j = 1;
 for i=1:size(files,1)
     c1 = strfind(files(i).name,'Ganho');
-    c2 = strfind(files(i).name,'Fase');
-    if (c1 == true)
+    c1 = strfind(files(i).name,'Fase');
+    if
         files_Name(j) = {files(i).name};
         j = j + 1;
     end
@@ -52,7 +52,7 @@ for  i=1:size(files_Data_num,2)
     end
     subplot(2,size(files_Data_num,2)/2,k+3*j)
     semilogx(logscale,files_Data_num(:,i))
-    title(strrep(files_Name(i),'Ganho','Análise'), 'FontSize', 30)
+    title(files_Name(i), 'FontSize', 30)
     xlabel('Escala Logaritmica 5Hz - 5Khz', 'FontSize', 25)
     ylabel(yl, 'FontSize', 30);
 end
